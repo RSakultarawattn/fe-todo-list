@@ -53,19 +53,4 @@ export default class Login extends Component {
             </div>
         )
     }
-
-
-
-
-
-
-
-
-    render() {
-        return (
-            <div>
-
-            </div>
-        )
-    }
 }
