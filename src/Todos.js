@@ -26,14 +26,14 @@ export default class Todos extends Component {
     }
 
     handleSubmit = async (e) => {
-        const { todoName, completed } = this.state;
+        const { todoName } = this.state;
         const { token } = this.props;
 
         e.preventDefault();
 
         const newTodo = {
 
-            name: todoName,
+            todo: todoName,
             completed: false,
         };
 
@@ -50,7 +50,7 @@ export default class Todos extends Component {
     handleCompletedClick = async (someId) => {
         const { token } = this.props;
 
-        await request.put('https://radiant-hamlet-61264.herokuapp.com/api/todos/${someId}')
+        await request.put(`https://radiant-hamlet-61264.herokuapp.com/api/todos/${someId}`)
             .set('Authorization', token);
 
         await this.fetchTodos();
@@ -76,12 +76,17 @@ export default class Todos extends Component {
                         />
                     </label>
                     <label>
-                        Completed:
+                        {/* Completed:
                     <input
+                            //<option value={false} value={true}></option>
                             type={Boolean}
                             value={completed}
+
                             onChange={(e) => this.setState({ completed: e.target.value })}
-                        />
+                        /> */}
+
+
+
                     </label>
                     <button>
                         Add todo
@@ -90,21 +95,20 @@ export default class Todos extends Component {
                 {
                     loading
                         ? 'LOADING!!!!!'
-                        : todos.map(todo => <div key={`${todo}.name}${todo.id}${Math.random()}`} style={{
+                        : todos.map(todo => <div key={`${todo}.todo}${todo.id}${Math.random()}`} style={{
                             textDecoration: todo.completed ? 'line-through' : 'none'
                         }
                         }>
-                            name: {todo.name}
+                            Todo: {todo.todo}
                             {
                                 todo.completed ? '' : <button
-                                    // if you're ever onClicking inside of a map, you might need to make an anonymous function like this:
                                     onClick={() => this.handleCompletedClick(todo.id)}>
                                     Complete Todo
                         </button>
                             }
                         </div>)
                 }
-            </div>
+            </div >
         )
     }
 }
