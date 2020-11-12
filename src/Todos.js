@@ -59,14 +59,13 @@ export default class Todos extends Component {
     render() {
         const {
             todoName,
-            completed,
             loading,
             todos,
         } = this.state;
 
         return (
-            <div>
-                Welcome to the Todos!
+            <div className="list">
+                <h2>Welcome to the Todos!</h2>
                 <form onSubmit={this.handleSubmit}>
                     <label>
                         Add a todo:
@@ -76,14 +75,7 @@ export default class Todos extends Component {
                         />
                     </label>
                     <label>
-                        {/* Completed:
-                    <input
-                            //<option value={false} value={true}></option>
-                            type={Boolean}
-                            value={completed}
 
-                            onChange={(e) => this.setState({ completed: e.target.value })}
-                        /> */}
 
 
 
